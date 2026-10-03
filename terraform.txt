@@ -1,0 +1,111 @@
+.LOG
+first lecture:-intro
+
+apt update -y
+ 
+wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install terraform
+
+terraform -v -----check the version
+
+cat main.tf
+
+output "message" {
+  value = "Hello, World from Terraform!"
+}
+
+terraform init --initiate terraform
+
+terraform plan --show o/p
+
+terraform apply
+
+https://developer.hashicorp.com/terraform
+
+https://registry.terraform.io/
+
+
+Second Lecture:-Terraform Workflow:-
+
+1. Init Used to initialize a working directory containing terraform config files This is the first command that should be run after writing a new terraform config.Downloads Providers
+
+2. ValidateValidates the terraform config files in that respective directory to ensure they are Syntactically valid and internally consistent.
+
+3. PlanCreates an execution planTerraform performs a refresh and determines what actions are necessary to achieve the desired state specified in the config files.
+
+4. ApplyUsed to apply the changes required to reach the desired state of the configuration.By default, apply scans the current directory for the config and applies the changes appropriately.
+
+5. DestroyUsed to destroy the managed infrastructureThis will ask for confirmation before destroying.
+
+
+( API ) package
+1.terraform init ( Download Provider )
+2.terraform validate ( terraform code )
+eg : code ( error ) { } ( ) mat
+3.terraform plan : ( Future state of your infra )
+eg 30 tea stall --- planning run
+Kya hone wala h ye sab
+4.terraform apply ( code ) plan o run > 30 tea stall ban
+5.terraform destroy : tea stall delete  
+
+Topic : Terraform Foundation1) What is IAC :
+IaC allows you to build, change, and manage your infrastructure in a safe, consistent, and repeatable way by defining resource configurations that you can version, reuse, and share.Problem Statement : Imagin karna you run one buss Chai business manually 50 tea stall setup
+50 server   MUMBAI - metro
+
+eg:-
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+CHAI CUP Managment MILK LOCATIONGAS STOP cySugar -----													||||||||||||||||||||||
+||																										||||||||||||||||||||||
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+																										||||||||||||||||||||||
+1.Create VM 2.Configure Network 3.Install software 4.Configure DATABASE 5.ATTACH Storage				||||||||||||||||||||||
+kisi serever team -----																					||||||||||||||||||||||
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+provider
+api ---> init ( download ) provider
+terraform plan ( infra bana rha h ki display ) ------>
+( api get call )
+terraform apply : POST call
+Terraform delete : delete call----
+terraform plan ----- future state
+terraform plan10 ---- ec2 ( hone wala h )1) Provider : Resources provide
+eg : aws , gcp , azure , alibaba , local ( localhost ),
+github , vmwarefile ---
+ec2
+folder
+Linux ----2 min hold
+7300 ----> Important -- terraform learn -----
+syntax --- doc ----- padhane
+Syntax clear understand
+
+***************************first sample code*******************************
+starting by *resource*
+
+this is local provider
+  
+resource "local_file" "foo" {
+  content  = "Here our first provider"
+  filename = "${path.module}/welcome.text"
+}
+
+Simple madhe:
+init = Saman aanun thevne
+plan = Nakshe dakhavne ( future state )
+apply = Ghar bandhne ( POST call )
+destroy = Ghar padne ( delete call )
+
+Third Lecture:-Terraform core concept
+
+Getting started with the AWS CLI:-
+https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
+
+
+
+aws (IM)
+
+terraform.exe fmt--proper structure
+
+terraform life cycle --interview que
